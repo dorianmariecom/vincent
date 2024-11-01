@@ -2,8 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Vincent
@@ -13,5 +11,9 @@ module Vincent
     config.cache_store = :solid_cache_store
     config.active_job.queue_adapter = :solid_queue
     config.solid_queue.connects_to = { database: { reading: :queue, writing: :queue } }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = Rails.application.credentials.smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
   end
 end

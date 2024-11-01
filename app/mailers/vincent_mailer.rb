@@ -3,7 +3,7 @@ class VincentMailer < ApplicationMailer
     @urls = params.fetch(:urls)
     mail(
       from: "dorian@dorianmarie.com",
-      to: "dorian@dorianmarie.com",
+      to: Rails.application.credentials.to,
       subject: "reddit"
     )
   end
