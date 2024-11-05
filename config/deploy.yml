@@ -22,4 +22,4 @@ aliases:
 volumes:
   - "vincent_storage:/rails/storage"
 builder:
-  arch: amd64
+  arch: arm64
