@@ -1,3 +1,4 @@
+---
 vincent_reddit:
-  command: "VincentMailer.with(urls: Reddit.fetch).reddit_email.deliver_later"
+  command: 'VincentMailer.with(urls: Reddit.fetch).reddit_email.deliver_later'
   schedule: at 10am every day

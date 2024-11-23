@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VincentMailer < ApplicationMailer
   def reddit_email
     @urls = params.fetch(:urls)

@@ -1,25 +1,26 @@
-service: vincent
-image: dorianmariecom/vincent
-servers:
-  web:
-    - 138.201.175.197
-proxy:
-  ssl: true
-  host: vincent.dorianmarie.com
-registry:
-  username:
-    - KAMAL_REGISTRY_USERNAME
-  password:
-    - KAMAL_REGISTRY_PASSWORD
-env:
-  secret:
-    - RAILS_MASTER_KEY
+---
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
-  shell: app exec --interactive --reuse "bash"
-  logs: app logs -f
   dbc: app exec --interactive --reuse "bin/rails dbconsole"
-volumes:
-  - "vincent_storage:/rails/storage"
+  logs: app logs -f
+  shell: app exec --interactive --reuse "bash"
 builder:
   arch: arm64
+env:
+  secret:
+  - RAILS_MASTER_KEY
+image: dorianmariecom/vincent
+proxy:
+  host: vincent.dorianmarie.com
+  ssl: true
+registry:
+  password:
+  - KAMAL_REGISTRY_PASSWORD
+  username:
+  - KAMAL_REGISTRY_USERNAME
+servers:
+  web:
+  - 138.201.175.197
+service: vincent
+volumes:
+- vincent_storage:/rails/storage
